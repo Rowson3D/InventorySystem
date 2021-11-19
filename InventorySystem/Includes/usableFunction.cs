@@ -65,6 +65,52 @@ namespace InventorySystem
             }
         }
 
+        // Create a function that selects a random shipping company between UPS, FedEx, and USPS
+        public string GetShipper()
+        {
+            try
+            {
+                // Create a list of strings to hold the shipping companies
+                List<string> shippers = new List<string>();
+
+                // Add the shipping companies to the list
+                shippers.Add("UPS");
+                shippers.Add("FedEx");
+                shippers.Add("USPS");
+
+                // Select a random company from the list
+                Random rnd = new Random();
+                int index = rnd.Next(shippers.Count);
+                string shipper = shippers[index];
+
+                // Return the selected company
+                return shipper;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        // Create a function that gets the current date called GetDate
+        public string GetDate()
+        {
+            try
+            {
+                // Create a DateTime object and get the current date
+                DateTime now = DateTime.Now;
+
+                // Return the current date in the format of mm/dd/yyyy
+                return now.ToString("MM/dd/yyyy");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
         // Create a function that randomly generates a number on the following criteria:
         // The order number starts with an A
         // The order number is 10 numbers long

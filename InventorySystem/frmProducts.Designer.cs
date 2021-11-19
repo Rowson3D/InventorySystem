@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.numQuan = new System.Windows.Forms.NumericUpDown();
+            this.cboPackage = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
@@ -48,13 +51,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cboPackage = new System.Windows.Forms.ComboBox();
-            this.numQuan = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_Products)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numQuan)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,6 +77,44 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(884, 174);
             this.panel1.TabIndex = 0;
+            // 
+            // numQuan
+            // 
+            this.numQuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.numQuan.Location = new System.Drawing.Point(542, 89);
+            this.numQuan.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numQuan.Name = "numQuan";
+            this.numQuan.Size = new System.Drawing.Size(120, 26);
+            this.numQuan.TabIndex = 15;
+            // 
+            // cboPackage
+            // 
+            this.cboPackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cboPackage.FormattingEnabled = true;
+            this.cboPackage.Items.AddRange(new object[] {
+            "Box",
+            "Small Box",
+            "Pallet",
+            "Plastic Container",
+            "Fragile Container"});
+            this.cboPackage.Location = new System.Drawing.Point(542, 127);
+            this.cboPackage.Name = "cboPackage";
+            this.cboPackage.Size = new System.Drawing.Size(301, 28);
+            this.cboPackage.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label6.Location = new System.Drawing.Point(423, 131);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 17);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Packaging type: ";
             // 
             // label5
             // 
@@ -191,6 +229,7 @@
             // 
             // dtg_Products
             // 
+            this.dtg_Products.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtg_Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtg_Products.Location = new System.Drawing.Point(6, 75);
             this.dtg_Products.Name = "dtg_Products";
@@ -273,44 +312,6 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Search: ";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label6.Location = new System.Drawing.Point(423, 131);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 17);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Packaging type: ";
-            // 
-            // cboPackage
-            // 
-            this.cboPackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cboPackage.FormattingEnabled = true;
-            this.cboPackage.Items.AddRange(new object[] {
-            "Box",
-            "Small Box",
-            "Pallet",
-            "Plastic Container",
-            "Fragile Container"});
-            this.cboPackage.Location = new System.Drawing.Point(542, 127);
-            this.cboPackage.Name = "cboPackage";
-            this.cboPackage.Size = new System.Drawing.Size(301, 28);
-            this.cboPackage.TabIndex = 14;
-            // 
-            // numQuan
-            // 
-            this.numQuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.numQuan.Location = new System.Drawing.Point(542, 89);
-            this.numQuan.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numQuan.Name = "numQuan";
-            this.numQuan.Size = new System.Drawing.Size(120, 26);
-            this.numQuan.TabIndex = 15;
-            // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,10 +328,10 @@
             this.Load += new System.EventHandler(this.frmProducts_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_Products)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numQuan)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -55,7 +55,7 @@ namespace InventorySystem
                             else
                             {
                                 // Add new user to database
-                            sql = "INSERT INTO tbl_Users(users_name, users_pass, users_type, users_username, users_wg, users_address, users_zip, users_phone) VALUES('"+ txtName.Text +"', '"+ txtPassword.Text +"', 1, '"+ txtUsername.Text +"', 0, '"+ txtAddress.Text +"', '" + txtZip.Text + "', '"+ txtPhone.Text +"')";
+                            sql = "INSERT INTO tbl_Users(users_name, users_pass, users_mail,  users_type, users_username, users_wg, users_address, users_zip, users_phone) VALUES('"+ txtName.Text +"', '"+ txtPassword.Text +"', 1, '"+ txtUsername.Text +"', '"+ txtEmail.Text + "', 0, '"+ txtAddress.Text +"', '" + txtZip.Text + "', '"+ txtPhone.Text +"')";
                             config.Execute_CUD(sql, "Unable to save", txtName.Text + " has been registered successfully as an employee.");
                             this.Close();
                             }
@@ -84,7 +84,7 @@ namespace InventorySystem
                         else
                         {
                             // Add new user to database
-                        sql = "INSERT INTO tbl_Users(users_name, users_username, users_pass, users_type, users_wg, users_address, users_zip, users_phone) VALUES('" + txtName.Text + "', '" + txtUsername.Text + "', '" + txtPassword.Text + "', 0, 0, '" + txtAddress.Text + "', '"+ txtZip.Text +"', '" + txtPhone.Text + "')";
+                        sql = "INSERT INTO tbl_Users(users_name, users_username, users_pass, users_mail, users_type, users_wg, users_address, users_zip, users_phone) VALUES('" + txtName.Text + "', '" + txtUsername.Text + "', '" + txtPassword.Text + "','" + txtEmail.Text +"', 0, 0, '" + txtAddress.Text + "', '"+ txtZip.Text +"', '" + txtPhone.Text + "')";
                         config.Execute_CUD(sql, "Unable to save", txtName.Text +" has been registered successfully as a customer.");
                         this.Close();
                         }

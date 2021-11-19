@@ -54,7 +54,7 @@ namespace InventorySystem
                 }
                 else
                 {
-                    frmCustomer frm = new frmCustomer(config.dt.Rows[0]["users_name"].ToString(), config.dt.Rows[0]["users_type"].ToString(), config.dt.Rows[0]["users_id"].ToString(), config.dt.Rows[0]["users_address"].ToString(), config.dt.Rows[0]["users_phone"].ToString(), config.dt.Rows[0]["users_zip"].ToString());
+                    frmCustomer frm = new frmCustomer(config.dt.Rows[0]["users_name"].ToString(), config.dt.Rows[0]["users_type"].ToString(), config.dt.Rows[0]["users_id"].ToString(), config.dt.Rows[0]["users_address"].ToString(), config.dt.Rows[0]["users_phone"].ToString(), config.dt.Rows[0]["users_zip"].ToString(), config.dt.Rows[0]["users_mail"].ToString());
                     frm.Show();
                     this.Hide();
                 }

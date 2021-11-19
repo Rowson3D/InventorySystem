@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtZip = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtVerify = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
@@ -52,8 +54,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtZip = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_listUser)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -61,6 +63,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtEmail);
+            this.panel1.Controls.Add(this.lblEmail);
             this.panel1.Controls.Add(this.txtZip);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtVerify);
@@ -79,8 +83,26 @@
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Location = new System.Drawing.Point(12, 323);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(884, 174);
+            this.panel1.Size = new System.Drawing.Size(884, 203);
             this.panel1.TabIndex = 0;
+            // 
+            // txtZip
+            // 
+            this.txtZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtZip.Location = new System.Drawing.Point(543, 58);
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(301, 26);
+            this.txtZip.TabIndex = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label8.Location = new System.Drawing.Point(466, 63);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 17);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Zip code: ";
             // 
             // txtVerify
             // 
@@ -231,7 +253,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(47, 503);
+            this.btnSave.Location = new System.Drawing.Point(47, 544);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(157, 33);
             this.btnSave.TabIndex = 7;
@@ -241,7 +263,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(210, 503);
+            this.btnUpdate.Location = new System.Drawing.Point(210, 544);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(157, 33);
             this.btnUpdate.TabIndex = 8;
@@ -251,7 +273,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(373, 503);
+            this.btnDelete.Location = new System.Drawing.Point(373, 544);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(157, 33);
             this.btnDelete.TabIndex = 9;
@@ -261,7 +283,7 @@
             // 
             // btnClearAll
             // 
-            this.btnClearAll.Location = new System.Drawing.Point(536, 503);
+            this.btnClearAll.Location = new System.Drawing.Point(536, 544);
             this.btnClearAll.Name = "btnClearAll";
             this.btnClearAll.Size = new System.Drawing.Size(157, 33);
             this.btnClearAll.TabIndex = 10;
@@ -271,7 +293,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(699, 503);
+            this.btnClose.Location = new System.Drawing.Point(699, 544);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(157, 33);
             this.btnClose.TabIndex = 11;
@@ -310,29 +332,29 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Search: ";
             // 
-            // txtZip
+            // txtEmail
             // 
-            this.txtZip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtZip.Location = new System.Drawing.Point(543, 58);
-            this.txtZip.Name = "txtZip";
-            this.txtZip.Size = new System.Drawing.Size(301, 26);
-            this.txtZip.TabIndex = 4;
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtEmail.Location = new System.Drawing.Point(139, 154);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(301, 26);
+            this.txtEmail.TabIndex = 13;
             // 
-            // label8
+            // lblEmail
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label8.Location = new System.Drawing.Point(466, 63);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 17);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Zip code: ";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lblEmail.Location = new System.Drawing.Point(78, 159);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(55, 17);
+            this.lblEmail.TabIndex = 14;
+            this.lblEmail.Text = "E-mail: ";
             // 
             // frmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 553);
+            this.ClientSize = new System.Drawing.Size(908, 590);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnClearAll);
@@ -380,5 +402,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtZip;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblEmail;
     }
 }

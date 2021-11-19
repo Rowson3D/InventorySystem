@@ -31,6 +31,7 @@ namespace InventorySystem
             sqlite_conn.Open();
         }
 
+
         // Create a method called sqlQuery(sql)
         public void sqlQuery(string sql)
         {

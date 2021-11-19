@@ -30,7 +30,6 @@
         {
             this.dtgInventory = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtCustomerInfo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cboYear = new System.Windows.Forms.ComboBox();
@@ -41,8 +40,11 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtCode = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblSubtotal = new System.Windows.Forms.Label();
+            this.lblTax = new System.Windows.Forms.Label();
+            this.lblShipping = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblSubtotalLbl = new System.Windows.Forms.Label();
             this.lblTaxlbl = new System.Windows.Forms.Label();
             this.lblShippinglbl = new System.Windows.Forms.Label();
             this.lblTotallbl = new System.Windows.Forms.Label();
@@ -51,16 +53,14 @@
             this.lblCart = new System.Windows.Forms.Label();
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.lblSubtotalLbl = new System.Windows.Forms.Label();
-            this.lblSubtotal = new System.Windows.Forms.Label();
-            this.lblTax = new System.Windows.Forms.Label();
-            this.lblShipping = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDiscount = new System.Windows.Forms.Button();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCustomerInfo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgInventory)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -71,10 +71,10 @@
             // dtgInventory
             // 
             this.dtgInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgInventory.ColumnHeadersVisible = false;
             this.dtgInventory.Location = new System.Drawing.Point(12, 82);
             this.dtgInventory.Name = "dtgInventory";
             this.dtgInventory.RowHeadersVisible = false;
+            this.dtgInventory.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dtgInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgInventory.Size = new System.Drawing.Size(394, 253);
             this.dtgInventory.TabIndex = 1;
@@ -89,16 +89,6 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Contact Information";
-            // 
-            // txtCustomerInfo
-            // 
-            this.txtCustomerInfo.Enabled = false;
-            this.txtCustomerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtCustomerInfo.Location = new System.Drawing.Point(6, 19);
-            this.txtCustomerInfo.Multiline = true;
-            this.txtCustomerInfo.Name = "txtCustomerInfo";
-            this.txtCustomerInfo.Size = new System.Drawing.Size(259, 163);
-            this.txtCustomerInfo.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -193,7 +183,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnDiscount);
             this.groupBox3.Controls.Add(this.lblSubtotal);
             this.groupBox3.Controls.Add(this.lblTax);
             this.groupBox3.Controls.Add(this.lblShipping);
@@ -210,151 +200,6 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Total:";
-            // 
-            // txtCode
-            // 
-            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtCode.Location = new System.Drawing.Point(10, 39);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(164, 26);
-            this.txtCode.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.label3.Location = new System.Drawing.Point(6, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Discount Code:";
-            // 
-            // lblTaxlbl
-            // 
-            this.lblTaxlbl.AutoSize = true;
-            this.lblTaxlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lblTaxlbl.Location = new System.Drawing.Point(6, 103);
-            this.lblTaxlbl.Name = "lblTaxlbl";
-            this.lblTaxlbl.Size = new System.Drawing.Size(41, 20);
-            this.lblTaxlbl.TabIndex = 2;
-            this.lblTaxlbl.Text = "Tax:";
-            // 
-            // lblShippinglbl
-            // 
-            this.lblShippinglbl.AutoSize = true;
-            this.lblShippinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lblShippinglbl.Location = new System.Drawing.Point(6, 133);
-            this.lblShippinglbl.Name = "lblShippinglbl";
-            this.lblShippinglbl.Size = new System.Drawing.Size(78, 20);
-            this.lblShippinglbl.TabIndex = 1;
-            this.lblShippinglbl.Text = "Shipping:";
-            // 
-            // lblTotallbl
-            // 
-            this.lblTotallbl.AutoSize = true;
-            this.lblTotallbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lblTotallbl.Location = new System.Drawing.Point(6, 164);
-            this.lblTotallbl.Name = "lblTotallbl";
-            this.lblTotallbl.Size = new System.Drawing.Size(51, 20);
-            this.lblTotallbl.TabIndex = 0;
-            this.lblTotallbl.Text = "Total:";
-            // 
-            // dtgCart
-            // 
-            this.dtgCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgCart.ColumnHeadersVisible = false;
-            this.dtgCart.Location = new System.Drawing.Point(443, 37);
-            this.dtgCart.Name = "dtgCart";
-            this.dtgCart.RowHeadersVisible = false;
-            this.dtgCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgCart.Size = new System.Drawing.Size(394, 298);
-            this.dtgCart.TabIndex = 8;
-            // 
-            // lblInventory
-            // 
-            this.lblInventory.AutoSize = true;
-            this.lblInventory.Location = new System.Drawing.Point(164, 21);
-            this.lblInventory.Name = "lblInventory";
-            this.lblInventory.Size = new System.Drawing.Size(79, 13);
-            this.lblInventory.TabIndex = 9;
-            this.lblInventory.Text = "Store Inventory";
-            // 
-            // lblCart
-            // 
-            this.lblCart.AutoSize = true;
-            this.lblCart.Location = new System.Drawing.Point(598, 21);
-            this.lblCart.Name = "lblCart";
-            this.lblCart.Size = new System.Drawing.Size(73, 13);
-            this.lblCart.TabIndex = 10;
-            this.lblCart.Text = "Customer Cart";
-            // 
-            // btnOrder
-            // 
-            this.btnOrder.Location = new System.Drawing.Point(135, 602);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(271, 42);
-            this.btnOrder.TabIndex = 11;
-            this.btnOrder.Text = "Place Order";
-            this.btnOrder.UseVisualStyleBackColor = true;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(443, 602);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(271, 42);
-            this.btnClose.TabIndex = 12;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.textBox1.Location = new System.Drawing.Point(79, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(326, 23);
-            this.textBox1.TabIndex = 13;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label1.Location = new System.Drawing.Point(12, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 17);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Search: ";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(413, 136);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(24, 23);
-            this.btnAdd.TabIndex = 15;
-            this.btnAdd.Text = ">";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Location = new System.Drawing.Point(413, 197);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(24, 23);
-            this.btnRemove.TabIndex = 16;
-            this.btnRemove.Text = "<";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // lblSubtotalLbl
-            // 
-            this.lblSubtotalLbl.AutoSize = true;
-            this.lblSubtotalLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.lblSubtotalLbl.Location = new System.Drawing.Point(6, 74);
-            this.lblSubtotalLbl.Name = "lblSubtotalLbl";
-            this.lblSubtotalLbl.Size = new System.Drawing.Size(80, 20);
-            this.lblSubtotalLbl.TabIndex = 5;
-            this.lblSubtotalLbl.Text = "Subtotal: ";
             // 
             // lblSubtotal
             // 
@@ -396,15 +241,176 @@
             this.lblTotal.TabIndex = 6;
             this.lblTotal.Text = "$0.00";
             // 
-            // button1
+            // lblSubtotalLbl
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.button1.Location = new System.Drawing.Point(180, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 26);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Apply";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblSubtotalLbl.AutoSize = true;
+            this.lblSubtotalLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.lblSubtotalLbl.Location = new System.Drawing.Point(6, 74);
+            this.lblSubtotalLbl.Name = "lblSubtotalLbl";
+            this.lblSubtotalLbl.Size = new System.Drawing.Size(80, 20);
+            this.lblSubtotalLbl.TabIndex = 5;
+            this.lblSubtotalLbl.Text = "Subtotal: ";
+            // 
+            // lblTaxlbl
+            // 
+            this.lblTaxlbl.AutoSize = true;
+            this.lblTaxlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.lblTaxlbl.Location = new System.Drawing.Point(6, 103);
+            this.lblTaxlbl.Name = "lblTaxlbl";
+            this.lblTaxlbl.Size = new System.Drawing.Size(41, 20);
+            this.lblTaxlbl.TabIndex = 2;
+            this.lblTaxlbl.Text = "Tax:";
+            // 
+            // lblShippinglbl
+            // 
+            this.lblShippinglbl.AutoSize = true;
+            this.lblShippinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.lblShippinglbl.Location = new System.Drawing.Point(6, 133);
+            this.lblShippinglbl.Name = "lblShippinglbl";
+            this.lblShippinglbl.Size = new System.Drawing.Size(78, 20);
+            this.lblShippinglbl.TabIndex = 1;
+            this.lblShippinglbl.Text = "Shipping:";
+            // 
+            // lblTotallbl
+            // 
+            this.lblTotallbl.AutoSize = true;
+            this.lblTotallbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.lblTotallbl.Location = new System.Drawing.Point(6, 164);
+            this.lblTotallbl.Name = "lblTotallbl";
+            this.lblTotallbl.Size = new System.Drawing.Size(51, 20);
+            this.lblTotallbl.TabIndex = 0;
+            this.lblTotallbl.Text = "Total:";
+            // 
+            // dtgCart
+            // 
+            this.dtgCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgCart.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dtgCart.Location = new System.Drawing.Point(443, 37);
+            this.dtgCart.Name = "dtgCart";
+            this.dtgCart.RowHeadersVisible = false;
+            this.dtgCart.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dtgCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgCart.Size = new System.Drawing.Size(394, 298);
+            this.dtgCart.TabIndex = 8;
+            this.dtgCart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgCart_CellClick);
+            this.dtgCart.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgCart_CellValueChanged);
+            this.dtgCart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtgCart_KeyPress);
+            // 
+            // lblInventory
+            // 
+            this.lblInventory.AutoSize = true;
+            this.lblInventory.Location = new System.Drawing.Point(164, 21);
+            this.lblInventory.Name = "lblInventory";
+            this.lblInventory.Size = new System.Drawing.Size(79, 13);
+            this.lblInventory.TabIndex = 9;
+            this.lblInventory.Text = "Store Inventory";
+            // 
+            // lblCart
+            // 
+            this.lblCart.AutoSize = true;
+            this.lblCart.Location = new System.Drawing.Point(598, 21);
+            this.lblCart.Name = "lblCart";
+            this.lblCart.Size = new System.Drawing.Size(73, 13);
+            this.lblCart.TabIndex = 10;
+            this.lblCart.Text = "Customer Cart";
+            // 
+            // btnOrder
+            // 
+            this.btnOrder.Location = new System.Drawing.Point(135, 602);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(271, 42);
+            this.btnOrder.TabIndex = 11;
+            this.btnOrder.Text = "Place Order";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(443, 602);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(271, 42);
+            this.btnClose.TabIndex = 12;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtSearch.Location = new System.Drawing.Point(79, 50);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(326, 23);
+            this.txtSearch.TabIndex = 13;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label1.Location = new System.Drawing.Point(12, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 17);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Search: ";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(413, 136);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(24, 23);
+            this.btnAdd.TabIndex = 15;
+            this.btnAdd.Text = ">";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(413, 197);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(24, 23);
+            this.btnRemove.TabIndex = 16;
+            this.btnRemove.Text = "<";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnDiscount
+            // 
+            this.btnDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.btnDiscount.Location = new System.Drawing.Point(180, 39);
+            this.btnDiscount.Name = "btnDiscount";
+            this.btnDiscount.Size = new System.Drawing.Size(72, 26);
+            this.btnDiscount.TabIndex = 10;
+            this.btnDiscount.Text = "Apply";
+            this.btnDiscount.UseVisualStyleBackColor = true;
+            this.btnDiscount.Click += new System.EventHandler(this.btnDiscount_Click);
+            // 
+            // txtCode
+            // 
+            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtCode.Location = new System.Drawing.Point(10, 39);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(164, 26);
+            this.txtCode.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Discount Code:";
+            // 
+            // txtCustomerInfo
+            // 
+            this.txtCustomerInfo.Enabled = false;
+            this.txtCustomerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtCustomerInfo.Location = new System.Drawing.Point(6, 19);
+            this.txtCustomerInfo.Multiline = true;
+            this.txtCustomerInfo.Name = "txtCustomerInfo";
+            this.txtCustomerInfo.Size = new System.Drawing.Size(259, 163);
+            this.txtCustomerInfo.TabIndex = 0;
             // 
             // frmCustomer
             // 
@@ -414,7 +420,7 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnOrder);
             this.Controls.Add(this.lblCart);
@@ -447,8 +453,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtCode;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTaxlbl;
         private System.Windows.Forms.Label lblShippinglbl;
         private System.Windows.Forms.Label lblTotallbl;
@@ -457,11 +461,10 @@
         private System.Windows.Forms.Label lblCart;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.TextBox txtCustomerInfo;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label6;
@@ -475,6 +478,9 @@
         private System.Windows.Forms.Label lblTax;
         private System.Windows.Forms.Label lblShipping;
         private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDiscount;
+        private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCustomerInfo;
     }
 }

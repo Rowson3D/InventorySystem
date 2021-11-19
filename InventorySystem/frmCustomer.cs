@@ -12,8 +12,8 @@ namespace InventorySystem
 {
     public partial class frmCustomer : Form
     {
-        string sname, stype, sid, saddress, sphone, szip;
-        public frmCustomer(string name, string type, string id, string address, string phone, string zip)
+        string sname, stype, sid, saddress, sphone, szip, semail;
+        public frmCustomer(string name, string type, string id, string address, string phone, string zip, string email)
         {
             sname = name;
             stype = type;
@@ -21,6 +21,7 @@ namespace InventorySystem
             saddress = address;
             sphone = phone;
             szip = zip;
+            semail = email;
             InitializeComponent();
         }
 
@@ -41,6 +42,7 @@ namespace InventorySystem
             txtCustomerInfo.Text = "Name: " + sname;
             txtCustomerInfo.Text += "\r\nAddress: " + saddress;
             txtCustomerInfo.Text += "\r\nZip: " + szip;
+            txtCustomerInfo.Text += "\r\nE-mail: " + semail;
             txtCustomerInfo.Text += "\r\nPhone: " + funct.FormatPhoneNumber(sphone); // Formats phone #
             txtCustomerInfo.Text += "\r\nCustomer Level: " + funct.GetName(stype);
             txtCustomerInfo.Text += "\r\nCustomer Number: " + sid;
@@ -83,36 +85,85 @@ namespace InventorySystem
 
         }
 
+
+        // Used for order generation //
+        double total { get; set; }
+        double shipping { get; set; }
+        double tax { get; set; }
+        double subtotal { get; set; }
+        //                           //
+
+
         private void btnOrder_Click(object sender, EventArgs e)
-        {
+        {   
+                string order_id = funct.GenerateOrderNumber();
+                string order_name = sname;
+                string order_address = saddress;
+                string order_shipper = funct.GetShipper();
+                string order_date = funct.GetDate();
 
+                sql = "INSERT INTO tbl_Order_Details (order_id, order_name, order_address, order_shipper, order_total, order_shipping, order_date) VALUES ('" + order_id + "', '" + order_name + "', '" + order_address + "', '" + order_shipper + "', '" + total + "', '" + shipping + "', '" + order_date + "')";
+                config.Execute_Query(sql);
+                // Create a messagebox that will display the order number and the email address of the customer
+                MessageBox.Show("Order Number: " + order_id + "\r\n" + "E-mail: " + semail);
+                UpdateProdList();
         }
-
         // Create a method that will update the Tax and Total labels called lblTax and lblTotal
         // First calculate the subtotal using dtgCart price * dtgCart quantity
         // Then calculate the tax using the subtotal * 0.06
         // Then calculate the total using the subtotal + tax
-        private void UpdateTotal()
+        public void UpdateTotal()
         {
-            double subtotal = 0;
-            double tax = 0;
-            double total = 0;
-            double shipping = 0;
 
-            // For each row number 4 in the datagridview
-            // Add them all up and store them in subtotal
+            // For each row get price and quantity and calculate subtotal
             foreach (DataGridViewRow row in dtgCart.Rows)
             {
-                subtotal += Convert.ToDouble(row.Cells[4].Value);
+                subtotal += Convert.ToDouble(row.Cells[4].Value) * Convert.ToDouble(row.Cells[5].Value);
             }
 
             tax = subtotal * 0.06;
-            shipping = tax * 0.05;
+            shipping = subtotal * 0.05;
             total = subtotal + tax;
             lblShipping.Text = shipping.ToString("C");
             lblSubtotal.Text = subtotal.ToString("C");
             lblTax.Text = tax.ToString("C");
             lblTotal.Text = total.ToString("C");
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            // For every key pressed in the search box
+            // Show the products that match the search criteria
+            // If the search box is empty, show all products
+            if (txtSearch.Text == "")
+            {
+                UpdateProdList();
+            }
+            else
+            {
+            sql = "SELECT * FROM tbl_Products WHERE prod_name LIKE '%" + txtSearch.Text + "%'";
+            config.Load_DTG(sql, dtgInventory);
+            }
+        }
+
+        private void dtgCart_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UpdateTotal();
+        }
+
+        private void dtgCart_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dtgCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateTotal();
+        }
+
+        private void btnDiscount_Click(object sender, EventArgs e)
+        {
+
         }
 
         public void UpdateProdList()
@@ -137,36 +188,28 @@ namespace InventorySystem
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // This button will add the selected product to the cart
-            // - 1 from the quantity of the item selected
-            // - Add the product to the cart
-            // - Update the total
-            // - Update the quantity of the product in the inventory
-            // - Update the dtgInventory
-            // - Update the dtgCart
-            // - Update the total
+            // This button will add the selected row in dtgInventory to dtgCart
+            // First check if the quantity is greater than 0
+            // If it is, add the row to dtgCart
+            // If it is not, show a messagebox saying that the quantity is 0
+            // If the quantity is 0, show a messagebox saying that the product is out of stock
             if (dtgInventory.SelectedRows.Count > 0)
             {
-                string sku = dtgInventory.SelectedRows[0].Cells[0].Value.ToString();
-                string name = dtgInventory.SelectedRows[0].Cells[1].Value.ToString();
-                string desc = dtgInventory.SelectedRows[0].Cells[2].Value.ToString();
-                string type = dtgInventory.SelectedRows[0].Cells[3].Value.ToString();
-                string price = dtgInventory.SelectedRows[0].Cells[4].Value.ToString();
-                string quan = dtgInventory.SelectedRows[0].Cells[5].Value.ToString();
-                string unit = dtgInventory.SelectedRows[0].Cells[6].Value.ToString();
-
-                // Check if the product is already in the cart
-                bool found = false;
-                if (dtgCart.Rows.Count > 1)
+                // Check if quantity is not 0 in dtgInventory and if the selected row column name doesn't already exist in dtgCart
+                if (Convert.ToInt32(dtgInventory.SelectedRows[0].Cells[5].Value) > 0)
                 {
-                    dtgCart.Rows.Add(sku, name, desc, type, price, quan, unit);
+                    dtgCart.Rows.Add(dtgInventory.SelectedRows[0].Cells[0].Value, dtgInventory.SelectedRows[0].Cells[1].Value, dtgInventory.SelectedRows[0].Cells[2].Value, dtgInventory.SelectedRows[0].Cells[3].Value, dtgInventory.SelectedRows[0].Cells[4].Value, 1, dtgInventory.SelectedRows[0].Cells[6].Value);
                     UpdateTotal();
+                }
+                else
+                {
+                    MessageBox.Show("This product is out of stock");
                 }
             }
             else
             {
                 MessageBox.Show("Please select a product");
-            }   
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)

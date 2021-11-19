@@ -47,6 +47,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtZip = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtPassword.Location = new System.Drawing.Point(37, 149);
+            this.txtPassword.Location = new System.Drawing.Point(37, 146);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(188, 26);
@@ -71,7 +73,7 @@
             // txtVerify
             // 
             this.txtVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtVerify.Location = new System.Drawing.Point(37, 200);
+            this.txtVerify.Location = new System.Drawing.Point(37, 197);
             this.txtVerify.Name = "txtVerify";
             this.txtVerify.PasswordChar = '*';
             this.txtVerify.Size = new System.Drawing.Size(188, 26);
@@ -90,7 +92,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(34, 133);
+            this.lblPassword.Location = new System.Drawing.Point(34, 130);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 4;
@@ -99,7 +101,7 @@
             // lblVerify
             // 
             this.lblVerify.AutoSize = true;
-            this.lblVerify.Location = new System.Drawing.Point(34, 184);
+            this.lblVerify.Location = new System.Drawing.Point(34, 181);
             this.lblVerify.Name = "lblVerify";
             this.lblVerify.Size = new System.Drawing.Size(85, 13);
             this.lblVerify.TabIndex = 5;
@@ -107,7 +109,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(201, 252);
+            this.btnRegister.Location = new System.Drawing.Point(202, 286);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
             this.btnRegister.TabIndex = 10;
@@ -200,9 +202,9 @@
             this.groupBox1.Controls.Add(this.empCodeReg);
             this.groupBox1.Controls.Add(this.cbEmployee);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(253, 133);
+            this.groupBox1.Location = new System.Drawing.Point(253, 131);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(188, 93);
+            this.groupBox1.Size = new System.Drawing.Size(188, 139);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee\'s only";
@@ -224,11 +226,30 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Zip Code:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(34, 228);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(38, 13);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "E-mail:";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtEmail.Location = new System.Drawing.Point(37, 244);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(188, 26);
+            this.txtEmail.TabIndex = 18;
+            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 302);
+            this.ClientSize = new System.Drawing.Size(479, 324);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtZip);
             this.Controls.Add(this.groupBox1);
@@ -275,5 +296,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtZip;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtEmail;
     }
 }
