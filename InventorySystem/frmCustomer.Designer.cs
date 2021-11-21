@@ -30,6 +30,7 @@
         {
             this.dtgInventory = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCustomerInfo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cboYear = new System.Windows.Forms.ComboBox();
@@ -37,14 +38,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCVV = new System.Windows.Forms.TextBox();
+            this.txtCC = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnDiscount = new System.Windows.Forms.Button();
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.lblTax = new System.Windows.Forms.Label();
             this.lblShipping = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblSubtotalLbl = new System.Windows.Forms.Label();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblTaxlbl = new System.Windows.Forms.Label();
             this.lblShippinglbl = new System.Windows.Forms.Label();
             this.lblTotallbl = new System.Windows.Forms.Label();
@@ -57,10 +61,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.btnDiscount = new System.Windows.Forms.Button();
-            this.txtCode = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtCustomerInfo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgInventory)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -90,6 +90,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Contact Information";
             // 
+            // txtCustomerInfo
+            // 
+            this.txtCustomerInfo.Enabled = false;
+            this.txtCustomerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtCustomerInfo.Location = new System.Drawing.Point(6, 19);
+            this.txtCustomerInfo.Multiline = true;
+            this.txtCustomerInfo.Name = "txtCustomerInfo";
+            this.txtCustomerInfo.Size = new System.Drawing.Size(259, 163);
+            this.txtCustomerInfo.TabIndex = 0;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label6);
@@ -98,12 +108,12 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.txtCVV);
+            this.groupBox2.Controls.Add(this.txtCC);
             this.groupBox2.Location = new System.Drawing.Point(289, 394);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(271, 188);
-            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Customer Payment Information";
             // 
@@ -124,16 +134,29 @@
             this.cboYear.Location = new System.Drawing.Point(112, 103);
             this.cboYear.Name = "cboYear";
             this.cboYear.Size = new System.Drawing.Size(73, 28);
-            this.cboYear.TabIndex = 9;
+            this.cboYear.TabIndex = 6;
             // 
             // cboMonth
             // 
             this.cboMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.cboMonth.FormattingEnabled = true;
+            this.cboMonth.Items.AddRange(new object[] {
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"});
             this.cboMonth.Location = new System.Drawing.Point(6, 103);
             this.cboMonth.Name = "cboMonth";
             this.cboMonth.Size = new System.Drawing.Size(80, 28);
-            this.cboMonth.TabIndex = 8;
+            this.cboMonth.TabIndex = 5;
             // 
             // label5
             // 
@@ -165,21 +188,23 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Credit Card:";
             // 
-            // textBox4
+            // txtCVV
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.textBox4.Location = new System.Drawing.Point(203, 105);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(61, 26);
-            this.textBox4.TabIndex = 2;
+            this.txtCVV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtCVV.Location = new System.Drawing.Point(203, 105);
+            this.txtCVV.MaxLength = 3;
+            this.txtCVV.Name = "txtCVV";
+            this.txtCVV.Size = new System.Drawing.Size(61, 26);
+            this.txtCVV.TabIndex = 7;
             // 
-            // textBox2
+            // txtCC
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.textBox2.Location = new System.Drawing.Point(6, 39);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(258, 26);
-            this.textBox2.TabIndex = 0;
+            this.txtCC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtCC.Location = new System.Drawing.Point(6, 39);
+            this.txtCC.MaxLength = 16;
+            this.txtCC.Name = "txtCC";
+            this.txtCC.Size = new System.Drawing.Size(258, 26);
+            this.txtCC.TabIndex = 4;
             // 
             // groupBox3
             // 
@@ -197,9 +222,20 @@
             this.groupBox3.Location = new System.Drawing.Point(566, 394);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(271, 188);
-            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Total:";
+            // 
+            // btnDiscount
+            // 
+            this.btnDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.btnDiscount.Location = new System.Drawing.Point(180, 39);
+            this.btnDiscount.Name = "btnDiscount";
+            this.btnDiscount.Size = new System.Drawing.Size(72, 26);
+            this.btnDiscount.TabIndex = 10;
+            this.btnDiscount.Text = "Apply";
+            this.btnDiscount.UseVisualStyleBackColor = true;
+            this.btnDiscount.Click += new System.EventHandler(this.btnDiscount_Click);
             // 
             // lblSubtotal
             // 
@@ -250,6 +286,24 @@
             this.lblSubtotalLbl.Size = new System.Drawing.Size(80, 20);
             this.lblSubtotalLbl.TabIndex = 5;
             this.lblSubtotalLbl.Text = "Subtotal: ";
+            // 
+            // txtCode
+            // 
+            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtCode.Location = new System.Drawing.Point(10, 39);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(164, 26);
+            this.txtCode.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Discount Code:";
             // 
             // lblTaxlbl
             // 
@@ -340,7 +394,7 @@
             this.txtSearch.Location = new System.Drawing.Point(79, 50);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(326, 23);
-            this.txtSearch.TabIndex = 13;
+            this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label1
@@ -358,7 +412,7 @@
             this.btnAdd.Location = new System.Drawing.Point(413, 136);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(24, 23);
-            this.btnAdd.TabIndex = 15;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = ">";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -368,49 +422,10 @@
             this.btnRemove.Location = new System.Drawing.Point(413, 197);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(24, 23);
-            this.btnRemove.TabIndex = 16;
+            this.btnRemove.TabIndex = 2;
             this.btnRemove.Text = "<";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // btnDiscount
-            // 
-            this.btnDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.btnDiscount.Location = new System.Drawing.Point(180, 39);
-            this.btnDiscount.Name = "btnDiscount";
-            this.btnDiscount.Size = new System.Drawing.Size(72, 26);
-            this.btnDiscount.TabIndex = 10;
-            this.btnDiscount.Text = "Apply";
-            this.btnDiscount.UseVisualStyleBackColor = true;
-            this.btnDiscount.Click += new System.EventHandler(this.btnDiscount_Click);
-            // 
-            // txtCode
-            // 
-            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtCode.Location = new System.Drawing.Point(10, 39);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(164, 26);
-            this.txtCode.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.label3.Location = new System.Drawing.Point(6, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Discount Code:";
-            // 
-            // txtCustomerInfo
-            // 
-            this.txtCustomerInfo.Enabled = false;
-            this.txtCustomerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtCustomerInfo.Location = new System.Drawing.Point(6, 19);
-            this.txtCustomerInfo.Multiline = true;
-            this.txtCustomerInfo.Name = "txtCustomerInfo";
-            this.txtCustomerInfo.Size = new System.Drawing.Size(259, 163);
-            this.txtCustomerInfo.TabIndex = 0;
             // 
             // frmCustomer
             // 
@@ -465,8 +480,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCVV;
+        private System.Windows.Forms.TextBox txtCC;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboYear;
         private System.Windows.Forms.ComboBox cboMonth;

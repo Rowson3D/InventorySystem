@@ -44,6 +44,26 @@ namespace InventorySystem
         static Regex Valid_Password = ValidPassword();
         static Regex Valid_Email = Email_Address();
 
+        // Get the year from the selected date in comboBox and remove the first two characters
+        // name the method GetYear
+        public string getYear(ComboBox cb)
+        {
+            string year = cb.SelectedItem.ToString();
+            year = year.Remove(0, 2);
+            return year;
+        }
+
+        // Get the last four digits of a number in a textbox
+        public string getLastFourDigits(string text)
+        {
+            string lastFourDigits = "";
+            if (text.Length >= 4)
+            {
+                lastFourDigits = text.Substring(text.Length - 4);
+            }
+            return lastFourDigits;
+        }
+
         // Method to format a 10 digit number into a phone number format
         public string FormatPhoneNumber(string phoneNumber)
         {
