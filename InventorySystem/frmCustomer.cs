@@ -31,7 +31,6 @@ namespace InventorySystem
         private void frmCustomer_Load(object sender, EventArgs e)
         {
             UpdateProdList();
-            InitializeColumns();
             ShowUserInfo();
             InitializePaymentDates();
         }
@@ -110,7 +109,7 @@ namespace InventorySystem
                 // qty will be the quantity of the product as an integer
                 // price will be the price of the product as a double
                 // Ignore the last row of the dtgCart.
-                for (int i = 0; i < dtgCart.Rows.Count - 1; i++)
+                for (int i = 0; i < dtgCart.Rows.Count; i++)
                 {
                     string item = dtgCart.Rows[i].Cells[1].Value.ToString();
                     int qty = Convert.ToInt32(dtgCart.Rows[i].Cells[5].Value);
@@ -118,6 +117,19 @@ namespace InventorySystem
                     sql = "INSERT INTO tbl_Order_Items (order_id, item, qty, price) VALUES ('" + order_id + "', '" + item + "', '" + qty + "', '" + price + "')";
                     config.Execute_Query(sql);
                 }
+                // Update the quantity of the prod_quan and prod_name is the tbl_Products from the dtgInventory.
+                // The quantity of the product will be updated by the quantity of the product in the dtgInventory.
+                // Product name is just used for comparison.
+                for (int i = 0; i < dtgInventory.Rows.Count; i++)
+                {
+                    // declare prod_id as int
+                    int prod_id = Convert.ToInt32(dtgInventory.Rows[i].Cells[0].Value);
+                    int prod_quan = Convert.ToInt32(dtgInventory.Rows[i].Cells[5].Value);
+                    // the sql command will contain apostrophes, avoid s in syntax error
+                    sql = "UPDATE tbl_Products SET prod_quan = '" + prod_quan + "' WHERE prod_id = '" + prod_id + "'";
+                    config.Execute_Query(sql);
+                }
+
                 // Create a messagebox that will display the order number and the email address of the customer
                 // Make the messagebox a success message
                 MessageBox.Show("Order #" + order_id + " has been placed.\r\n" + "Your order will be shipped to " + saddress + ".\nPlease check " + semail + ".", "Order Placed", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -141,11 +153,12 @@ namespace InventorySystem
         
         public void UpdateTotal()
         {
-
-            // For each row get price and quantity and calculate subtotal
-            foreach (DataGridViewRow row in dtgCart.Rows)
+            // for every instance of new row or updated quantity, calculate the new total
+            // then update the lblTotal
+            double subtotal = 0;
+            for (int i = 0; i < dtgCart.Rows.Count; i++)
             {
-                subtotal += Convert.ToDouble(row.Cells[4].Value) * Convert.ToDouble(row.Cells[5].Value);
+                subtotal += Convert.ToDouble(dtgCart.Rows[i].Cells[4].Value) * Convert.ToInt32(dtgCart.Rows[i].Cells[5].Value);
             }
 
             tax = subtotal * 0.06;
@@ -165,7 +178,6 @@ namespace InventorySystem
 
         private void dtgCart_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UpdateTotal();
         }
 
         private void dtgCart_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -175,7 +187,7 @@ namespace InventorySystem
 
         private void dtgCart_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            UpdateTotal();
+
         }
 
         private void btnDiscount_Click(object sender, EventArgs e)
@@ -205,34 +217,86 @@ namespace InventorySystem
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // This button will add the selected row in dtgInventory to dtgCart
-            // First check if the quantity is greater than 0
-            // If it is, add the row to dtgCart
-            // If it is not, show a messagebox saying that the quantity is 0
-            // If the quantity is 0, show a messagebox saying that the product is out of stock
+            // Add the selected row from dtgInventory to dtgCart
+            // If the row already exists in dtgCart, then update the quantity
+            // Otherwise, add the row to dtgCart
+            // Don't forget to -1 from the quantity in dtgInventory
+            // If the quantity is 0 in dtgInventory, prompt the user with a messagebox
+            // Notify the user if the quantity is 0 in dtgInventory
             if (dtgInventory.SelectedRows.Count > 0)
             {
-                // Check if quantity is not 0 in dtgInventory and if the selected row column name doesn't already exist in dtgCart
-                if (Convert.ToInt32(dtgInventory.SelectedRows[0].Cells[5].Value) > 0)
+                string sku = dtgInventory.SelectedRows[0].Cells[0].Value.ToString();
+                string name = dtgInventory.SelectedRows[0].Cells[1].Value.ToString();
+                string desc = dtgInventory.SelectedRows[0].Cells[2].Value.ToString();
+                string type = dtgInventory.SelectedRows[0].Cells[3].Value.ToString();
+                string price = dtgInventory.SelectedRows[0].Cells[4].Value.ToString();
+                string quan = dtgInventory.SelectedRows[0].Cells[5].Value.ToString();
+                string unit = dtgInventory.SelectedRows[0].Cells[6].Value.ToString();
+                int qty = Convert.ToInt32(quan);
+                if (qty == 0)
                 {
-                    dtgCart.Rows.Add(dtgInventory.SelectedRows[0].Cells[0].Value, dtgInventory.SelectedRows[0].Cells[1].Value, dtgInventory.SelectedRows[0].Cells[2].Value, dtgInventory.SelectedRows[0].Cells[3].Value, dtgInventory.SelectedRows[0].Cells[4].Value, 1, dtgInventory.SelectedRows[0].Cells[6].Value);
-                    // Update the quantity in dtgInventory
-                    dtgInventory.SelectedRows[0].Cells[5].Value = Convert.ToInt32(dtgInventory.SelectedRows[0].Cells[5].Value) - 1;
-                    UpdateTotal();
+                    MessageBox.Show("Sorry, " + name + " is out of stock.", "Out of Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("This product is out of stock");
+                    bool found = false;
+                    for (int i = 0; i < dtgCart.Rows.Count; i++)
+                    {
+                        if (dtgCart.Rows[i].Cells[0].Value.ToString() == sku)
+                        {
+                            found = true;
+                            dtgCart.Rows[i].Cells[5].Value = Convert.ToInt32(dtgCart.Rows[i].Cells[5].Value) + 1;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        dtgCart.Rows.Add(sku, name, desc, type, price, 1, unit);
+                    }
+                    qty--;
+                    dtgInventory.Rows[dtgInventory.SelectedRows[0].Index].Cells[5].Value = qty;
+                    UpdateTotal();
                 }
             }
-            else
-            {
-                MessageBox.Show("Please select a product");
-            }
         }
-
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            // This button is similar to btnAdd, but instead of sending it to dtgCart, it sends the item to dtgInventory
+            // If the quantity is 1, remove the row from dtgCart
+            // Otherwise, update the quantity in dtgCart
+            // The item being updated must have the same SKU id as the item being removed
+
+            if (dtgCart.SelectedRows.Count > 0)
+            {
+                string sku = dtgCart.SelectedRows[0].Cells[0].Value.ToString();
+                string name = dtgCart.SelectedRows[0].Cells[1].Value.ToString();
+                string desc = dtgCart.SelectedRows[0].Cells[2].Value.ToString();
+                string type = dtgCart.SelectedRows[0].Cells[3].Value.ToString();
+                string price = dtgCart.SelectedRows[0].Cells[4].Value.ToString();
+                string quan = dtgCart.SelectedRows[0].Cells[5].Value.ToString();
+                string unit = dtgCart.SelectedRows[0].Cells[6].Value.ToString();
+                int qty = Convert.ToInt32(quan);
+                if (qty == 1)
+                {
+                    dtgCart.Rows.RemoveAt(dtgCart.SelectedRows[0].Index);
+                }
+                else
+                {
+                    qty--;
+                    dtgCart.Rows[dtgCart.SelectedRows[0].Index].Cells[5].Value = qty;
+                }
+                qty++;
+                for (int i = 0; i < dtgInventory.Rows.Count; i++)
+                {
+                    if (dtgInventory.Rows[i].Cells[0].Value.ToString() == sku)
+                    {
+                        // Now convert dtgInventory to int and add 1
+                        dtgInventory.Rows[i].Cells[5].Value = Convert.ToInt32(dtgInventory.Rows[i].Cells[5].Value) + 1;
+                        break;
+                    }
+                }
+                UpdateTotal();
+            }
         }
     }
 }

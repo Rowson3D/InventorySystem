@@ -215,7 +215,6 @@ C:\Users\Jarrod\source\repos\InventorySystem\InventorySystem\bin\Debug\zh-CHT\Mi
 C:\Users\Jarrod\source\repos\InventorySystem\InventorySystem\obj\Debug\InventorySystem.exe.config
 C:\Users\Jarrod\source\repos\InventorySystem\InventorySystem\obj\Debug\InventorySystem.frmWorkgroups.resources
 C:\Users\Jarrod\source\repos\InventorySystem\InventorySystem\obj\Debug\InventorySystem.frmOrderLookup.resources
-C:\Users\Jarrod\source\repos\InventorySystem\InventorySystem\obj\Debug\InventorySystem.frmOrderForm.resources
 C:\Users\Jarrod\Source\Repos\InventorySystem\InventorySystem\bin\Debug\de\Microsoft.VisualStudio.Data.Services.resources.dll
 C:\Users\Jarrod\Source\Repos\InventorySystem\InventorySystem\bin\Debug\es\Microsoft.VisualStudio.Data.Services.resources.dll
 C:\Users\Jarrod\Source\Repos\InventorySystem\InventorySystem\bin\Debug\fr\Microsoft.VisualStudio.Data.Services.resources.dll

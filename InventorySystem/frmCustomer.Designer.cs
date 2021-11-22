@@ -53,6 +53,13 @@
             this.lblShippinglbl = new System.Windows.Forms.Label();
             this.lblTotallbl = new System.Windows.Forms.Label();
             this.dtgCart = new System.Windows.Forms.DataGridView();
+            this.SKU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Packaging = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblInventory = new System.Windows.Forms.Label();
             this.lblCart = new System.Windows.Forms.Label();
             this.btnOrder = new System.Windows.Forms.Button();
@@ -70,9 +77,11 @@
             // 
             // dtgInventory
             // 
+            this.dtgInventory.AllowUserToAddRows = false;
             this.dtgInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgInventory.Location = new System.Drawing.Point(12, 82);
             this.dtgInventory.Name = "dtgInventory";
+            this.dtgInventory.ReadOnly = true;
             this.dtgInventory.RowHeadersVisible = false;
             this.dtgInventory.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dtgInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -337,8 +346,17 @@
             // 
             // dtgCart
             // 
+            this.dtgCart.AllowUserToAddRows = false;
             this.dtgCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgCart.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dtgCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SKU,
+            this.Name,
+            this.Description,
+            this.Type,
+            this.Price,
+            this.Quantity,
+            this.Packaging});
             this.dtgCart.Location = new System.Drawing.Point(443, 37);
             this.dtgCart.Name = "dtgCart";
             this.dtgCart.RowHeadersVisible = false;
@@ -349,6 +367,41 @@
             this.dtgCart.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgCart_CellClick);
             this.dtgCart.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgCart_CellValueChanged);
             this.dtgCart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtgCart_KeyPress);
+            // 
+            // SKU
+            // 
+            this.SKU.HeaderText = "SKU";
+            this.SKU.Name = "SKU";
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Packaging
+            // 
+            this.Packaging.HeaderText = "Packaging";
+            this.Packaging.Name = "Packaging";
             // 
             // lblInventory
             // 
@@ -445,7 +498,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dtgInventory);
-            this.Name = "frmCustomer";
+            //this.Name = "frmCustomer";
             this.Text = "frmCustomer";
             this.Load += new System.EventHandler(this.frmCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgInventory)).EndInit();
@@ -497,5 +550,12 @@
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCustomerInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SKU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Packaging;
     }
 }
