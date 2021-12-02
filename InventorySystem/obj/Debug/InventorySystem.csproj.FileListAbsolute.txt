@@ -230,3 +230,4 @@ C:\Users\Jarrod\Source\Repos\InventorySystem\InventorySystem\bin\Debug\pt-BR\Mic
 C:\Users\Jarrod\Source\Repos\InventorySystem\InventorySystem\bin\Debug\ru\Microsoft.VisualStudio.Data.Core.resources.dll
 C:\Users\Jarrod\Source\Repos\InventorySystem\InventorySystem\bin\Debug\tr\Microsoft.VisualStudio.Data.Core.resources.dll
 C:\Users\Jarrod\Source\Repos\InventorySystem\InventorySystem\obj\Debug\InventorySystem.csprojAssemblyReference.cache
+C:\Users\Jarrod\source\repos\InventorySystem\InventorySystem\obj\Debug\InventorySystem.frmStock.resources

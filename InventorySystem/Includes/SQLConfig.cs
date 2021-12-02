@@ -15,7 +15,7 @@ namespace InventorySystem
         private SQLiteConnection sqlite_conn = new SQLiteConnection("Data Source=database.db;Version=3;");
         private SQLiteCommand sqlite_cmd;
         private SQLiteDataAdapter sqlite_datadapter;
-        private SQLiteDataReader sqlite_datareader;
+        public SQLiteDataReader sqlite_datareader;
 
         public DataTable dt;
        
@@ -31,10 +31,10 @@ namespace InventorySystem
             sqlite_conn.Open();
         }
 
-
         // Create a method called sqlQuery(sql)
         public void sqlQuery(string sql)
         {
+            sqlite_conn.Open();
             // Create a new SQLiteCommand object called sqlite_cmd
             sqlite_cmd = sqlite_conn.CreateCommand();
 
@@ -51,7 +51,6 @@ namespace InventorySystem
             dt.Load(sqlite_datareader);
         }
 
-        
         public void Execute_CUD(string sql, string msg_false, string msg_true)
         {
             try
@@ -79,6 +78,10 @@ namespace InventorySystem
                 sqlite_conn.Close();
             }
         }
+
+        
+
+
 
         // Create a checkExists method to check if the data already exists in the database
         public bool checkExists(string sql)
@@ -109,6 +112,9 @@ namespace InventorySystem
                 sqlite_conn.Close();
             }
         }
+
+    
+
 
         public void Execute_Query(string sql)
         {
@@ -187,30 +193,6 @@ namespace InventorySystem
         }
 
         public void singleResult(string sql)
-        {
-            try
-            {
-                sqlite_conn.Open();
-                sqlite_cmd = new SQLiteCommand();
-                sqlite_datadapter = new SQLiteDataAdapter();
-                dt = new DataTable();
-
-                sqlite_cmd.Connection = sqlite_conn;
-                sqlite_cmd.CommandText = sql;
-                sqlite_datadapter.SelectCommand = sqlite_cmd;
-                sqlite_datadapter.Fill(dt);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlite_conn.Close();
-            }
-        }
-
-        public void loadReports(string sql)
         {
             try
             {
